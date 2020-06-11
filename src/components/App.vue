@@ -10,7 +10,7 @@ export default {
   },
   data() {
     return {
-      route: 'prices',
+      route: "prices",
       title: "Hello world",
       fname: "Miha",
       lname: "The G",
@@ -63,9 +63,7 @@ export default {
       @changeTitle="(payload) => onUpdateTitle(payload)"
     ></app-title>
 
-
     <a hre @click="chagneRoute('prices')">Prices</a>
-
 
     <products v-if="route === 'proudcts'"></products>
     <prices v-if="route === 'price'"></prices>
@@ -79,6 +77,5 @@ export default {
         {{ product }}
       </div>
     </template>
-
   </div>
 </template>

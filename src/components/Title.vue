@@ -18,7 +18,7 @@ export default {
   },
   destroyed() {
     console.log("TItle destroeyd");
-  },
+  }
 };
 </script>
 
