@@ -9,3 +9,5 @@ yarn-error.log*
 
 # Editor settings
 .vscode
+.prettierrc
+.gitignore
