@@ -22,15 +22,12 @@ export default {
     },
   },
   created() {
-    console.log(this.$router);
-
-    console.log("created");
     setTimeout(() => {
       this.products = [1, 2, 4];
     }, 1000);
   },
   mounted() {
-    console.log("mounted");
+    //
   },
   components: {
     "app-title": Title,
@@ -38,11 +35,9 @@ export default {
   },
   methods: {
     onChangeTitle(payload) {
-      console.log(payload.newTitle);
       this.title = payload.newTitle;
     },
     changeRoute(route) {
-      console.log(route);
       this.route = route;
     },
     goHome() {
@@ -60,17 +55,11 @@ export default {
 
 <template>
   <div id="app">
-    <!-- <a href @click.prevent="changeRoute('title')">Title</a>
-        <a href @click.prevent="changeRoute('subtitle')">Subtitle</a>
-        <app-title v-if="route === 'title'"></app-title>
-        <app-subtitle v-else-if="route === 'subtitle'"></app-subtitle> -->
-
     <div>APP COMPONENT</div>
+    <hr />
 
-    <button @click="goHome">Go home</button>
-    <button @click="nextID">Next ID</button>
-
-    <!-- <button @click.prevent="showRoute = !showRoute">Show route</button> -->
+    <router-link :to="{ name: 'home' }">Go to parent</router-link>
+    <router-link :to="{ name: 'home-child' }">Go to child</router-link>
 
     <router-view></router-view>
   </div>

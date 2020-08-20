@@ -5,36 +5,35 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-import ExampleRoute from "./components/ExampleRoute.vue";
-import ExampleRoute2 from "./components/ExampleRoute2.vue";
+import ParentRoute from "./components/ParentRoute.vue";
+import ChildRoute from "./components/ChildRoute.vue";
 
 //
 
+const router = new VueRouter({
+  mode: "history",
+  routes: [
+    {
+      path: "/",
+      name: "home",
+      component: ParentRoute,
+      children: [
+        {
+          path: "child",
+          name: "home-child",
+          component: ChildRoute
+        },
+      ],
+    },
+  ],
+});
+
+router.beforeEach((to, from, next) => {
+  console.log("--- Global route hook");
+  next();
+});
+
 new Vue({
   render: (h) => h(App),
-  router: new VueRouter({
-    mode: "history",
-    routes: [
-      {
-        path: "/",
-        name: "home",
-        component: {
-          render: (h) => h("div", "We are home"),
-        },
-      },
-      {
-        path: "/example/:id",
-        name: "my-path",
-        component: ExampleRoute,
-        props: true,
-      },
-      {
-        path: "*",
-        name: "404",
-        component: {
-          render: (h) => h("div", "404 Route component"),
-        },
-      },
-    ],
-  }),
+  router,
 }).$mount("#app");
